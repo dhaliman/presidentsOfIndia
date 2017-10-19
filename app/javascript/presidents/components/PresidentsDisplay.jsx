@@ -11,6 +11,7 @@ class PresidentsDisplay extends React.Component {
     }
   }
 
+  // GET the president
   presidentKoLekarAao(id) {
     axios.get(`/api/presidents/${id}`)
     .then(response => {
@@ -50,7 +51,7 @@ class PresidentsDisplay extends React.Component {
     const prevPresidentId = this.state.president.prev_id;
     return(
       <div>
-        <h1>{this.state.president.name}</h1>
+        <h1 style={{color: 'red'}}>{this.state.president.name}</h1>
         <img src={this.state.president.url} />
         <p>{this.state.president.in_office_start}</p>
         <p>{this.state.president.in_office_end}</p>
