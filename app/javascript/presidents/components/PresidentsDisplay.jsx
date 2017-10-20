@@ -61,6 +61,7 @@ class PresidentsDisplay extends React.Component {
     return(
       <div>
         <h1 style={{color: 'red'}}>{this.state.president.name}</h1>
+        {this.state.image == 'none' && <img src={"www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg"} />}
         <img onLoad={this.handleImageLoad} style={{display: this.state.image}} src={this.state.president.url} />
         <p>{this.state.president.in_office_start}</p>
         <p>{this.state.president.in_office_end}</p>
