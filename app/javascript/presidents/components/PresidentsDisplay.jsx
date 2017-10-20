@@ -7,8 +7,10 @@ class PresidentsDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      president: ''
+      president: '',
+      image: 'none'
     }
+    this.handleImageLoad = this.handleImageLoad.bind(this);
   }
 
   // GET the president
@@ -22,6 +24,13 @@ class PresidentsDisplay extends React.Component {
     .catch(error => {
       console.error(error);
     })
+  }
+
+  handleImageLoad() {
+    console.log('Image loaded.');
+    this.setState({
+      image: 'block'
+    });
   }
 
   setPresidentIdFromQueryString(ps) {
@@ -52,7 +61,7 @@ class PresidentsDisplay extends React.Component {
     return(
       <div>
         <h1 style={{color: 'red'}}>{this.state.president.name}</h1>
-        <img src={this.state.president.url} />
+        <img onLoad={this.handleImageLoad} style={{display: this.state.image}} src={this.state.president.url} />
         <p>{this.state.president.in_office_start}</p>
         <p>{this.state.president.in_office_end}</p>
         {prevPresidentId &&
